@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #066194 0%, #23a9e1 100%);
+}
+
+.product-card {
+  transition: all 0.3s ease;
+  border: 1px solid #E5E5E5;
+}
+
+.product-card:hover {
+  box-shadow: 0 8px 25px rgba(6, 97, 148, 0.15);
+  transform: translateY(-2px);
+}
+
+.search-input {
+  border: 2px solid #E5E5E5;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #066194;
+  outline: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #066194 0%, #23a9e1 100%);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #054a73 0%, #1e8bc4 100%);
+  transform: translateY(-1px);
+}
+
+.price-tag {
+  background: linear-gradient(135deg, #d2ab67 0%, #f5e884 100%);
+  color: #191919;
+}
