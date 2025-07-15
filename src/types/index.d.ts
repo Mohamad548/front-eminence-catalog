@@ -1,12 +1,21 @@
 // types/index.d.ts
+export interface Category {
+    id: number;
+    name?: string;
+}
+
 export interface Product {
-  [x: string]: any;
-  id: string;
+  id: number;
+  image: string;
+  code: string;
   name: string;
-  category: string;
-  image: string; // این برای ایموجی محصول استفاده می‌شود
+  categoryId: number;
+  price1: number;
+  price2: number;
+  priceCustomer: number;
   description: string;
-  pricePartner2: string;
-  pricePartner1: string;
-  priceRegular: string;
+  category?: Category;
+
+  // اگر میخوای کلیدهای اضافی با مقدار string داشته باشی:
+  [key: string]: number | string | Category | undefined;
 }

@@ -42,9 +42,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <div className="text-xs text-gray-500 mb-1">
               شناسه: {product.code}
             </div>
-            <div className="text-xs text-blue-600 mb-2">
-              {product.category_name}
-            </div>
+       <div className="text-xs text-blue-600 mb-2">
+  {typeof product.category_name === 'string' ? product.category_name : ''}
+</div>
             <p className="text-xs text-gray-600 leading-relaxed">
               {product.description}
             </p>
@@ -67,7 +67,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <div className="flex justify-between items-center text-xs">
               <span className="text-gray-600">فروش عادی:</span>
               <span className="bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs font-medium">
-                {product.price_customer.toLocaleString()} تومان
+              {product.price_customer?.toLocaleString() ?? '—'} تومان
               </span>
             </div>
           </div>

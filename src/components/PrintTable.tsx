@@ -3,20 +3,13 @@
 import Image from 'next/image';
 import React from 'react';
 import { BASE_URL } from '../../url';
+import { Product } from '@/types';
 
-interface Product {
-  id: number;
-  image: string;
-  code: string;
-  name: string;
-  price_customer: number;
-  description: string;
-}
+
 
 interface PrintTableProps {
   products: Product[];
 }
-
 export default function PrintTable({ products }: PrintTableProps) {
   return (
     <div className="bg-white p-6 rounded-xl shadow print:shadow-none print:p-0 print:bg-white max-w-[794px] mx-auto">
@@ -64,7 +57,7 @@ export default function PrintTable({ products }: PrintTableProps) {
               </td>
               <td className="py-2 px-2 border text-right">{product.name}</td>
               <td className="py-2 px-2 border font-bold text-green-600 print:text-black">
-                {product.price_customer.toLocaleString('fa-IR')} تومان
+             {product.priceCustomer?.toLocaleString('fa-IR') ?? '—'} تومان
               </td>
               <td className="py-2 px-2 border">{product.code}</td>
               <td className="py-2 px-2 border text-right whitespace-pre-line">

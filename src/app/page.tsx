@@ -17,15 +17,22 @@ export default function Home() {
   const fetchProducts = useCallback(async () => {
     setIsLoading(true);
     try {
-      const data = await api.getProducts();
+      const dataFromApi = await api.getProducts();
+
+      // داده‌ها را به نوع مورد نظر تبدیل کن
+      const data: Product[] = dataFromApi.map((item) => ({
+        ...item,
+        category_name: item.category?.name || '', // فرض مثال
+      }));
+
       setProducts(data);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       addToast('خطا در دریافت محصولات', 'error');
     } finally {
       setIsLoading(false);
     }
   }, [addToast]);
-
   useEffect(() => {
     fetchProducts();
   }, [fetchProducts]);
@@ -57,11 +64,16 @@ export default function Home() {
     setFilteredProducts(products);
   }, [products]);
 
+  // اصلاح تعریف categories که فقط رشته‌ها باشه
   const categories = Array.from(
-    new Set(products.map((p) => p.category_name))
-  ).filter(Boolean);
+    new Set(
+      products
+        .map((p) => p.category_name)
+        .filter((c): c is string => typeof c === 'string' && c.trim() !== '')
+    )
+  );
 
-  const exportProductsToPrint = (productsToPrint: typeof products) => {
+  const exportProductsToPrint = () => {
     window.print();
   };
 
@@ -85,9 +97,17 @@ export default function Home() {
         />
       </div>
 
-      {/* لیست کارت محصولات - فقط در حالت نمایش */}
-      <div id="productsList" className="p-4 space-y-4 flex-grow overflow-auto print:hidden">
-        {filteredProducts.length === 0 ? (
+      {/* لیست محصولات */}
+      <div
+        id="productsList"
+        className="p-4 space-y-4 flex-grow overflow-auto print:hidden"
+      >
+        {isLoading ? (
+          <div className="flex flex-col items-center justify-center py-20 text-gray-500">
+            <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4" />
+            <p className="text-sm">در حال بارگذاری محصولات...</p>
+          </div>
+        ) : filteredProducts.length === 0 ? (
           <div className="text-center py-8 text-gray-500">
             <div className="text-4xl mb-4">🔍</div>
             <p>محصولی یافت نشد</p>
@@ -102,13 +122,12 @@ export default function Home() {
       {/* دکمه چاپ - فقط در حالت نمایش */}
       <div className="p-4 text-center bg-white border-t print:hidden">
         <button
-          onClick={() => exportProductsToPrint(filteredProducts)}
+          onClick={exportProductsToPrint}
           className="btn-primary text-white px-8 py-3 rounded-lg font-medium text-lg"
         >
           📄 چاپ
         </button>
       </div>
-
       {/* جدول چاپ - فقط در حالت چاپ */}
       <div className="hidden print:block p-4">
         <PrintTable products={filteredProducts} />
