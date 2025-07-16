@@ -3,7 +3,7 @@ import { create } from 'zustand';
 
 interface CategoryState {
   selectedCategory: string | null;
-  setSelectedCategory: (category: string) => void;
+  setSelectedCategory: (category: string | null) => void;
 }
 
 export const useSelectedCategory = create<CategoryState>((set) => ({
