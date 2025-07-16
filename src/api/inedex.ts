@@ -1,24 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
 import { BASE_URL } from '../../url';
+import { Product } from '@/types';
 
-// 🧾 تایپ محصول و دسته‌بندی
-export interface Product {
-  [x: string]: string;
-  id: number;
-  image: string;
-  code: string;
-  name: string;
-  categoryId: number;
-  price1: number;
-  price2: number;
-  priceCustomer: number;
-  description: string;
-  category?: Category;
-}
-export interface Category {
-  id: number;
-  name: string;
-}
 
 // ✅ تعریف نوع سفارشی با متد اضافه
 interface CustomApiInstance extends AxiosInstance {
