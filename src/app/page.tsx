@@ -7,6 +7,7 @@ import { api } from '@/api/inedex';
 import { Product } from '@/types';
 import { useToast } from '@/context/ToastContext';
 import PrintTable from '@/components/PrintTable';
+import FloatingSocialButton from '@/components/floating-social-button';
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -118,7 +119,7 @@ console.log(products)
           ))
         )}
       </div>
-
+<div>df <FloatingSocialButton /></div>
       {/* دکمه چاپ - فقط در حالت نمایش */}
       <div className=" p-2 text-center btn-primary bg-white print:hidden  rounded-b-full fixed left-3 bottom-0">
         <button
@@ -128,6 +129,7 @@ console.log(products)
           <span className='text-xs font-sans'>چاپ</span> 
         </button>
       </div>
+     
       {/* جدول چاپ - فقط در حالت چاپ */}
       <div className="hidden print:block">
         <PrintTable products={filteredProducts} />
