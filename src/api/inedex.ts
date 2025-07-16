@@ -3,6 +3,7 @@ import { BASE_URL } from '../../url';
 
 // 🧾 تایپ محصول و دسته‌بندی
 export interface Product {
+  [x: string]: string;
   id: number;
   image: string;
   code: string;

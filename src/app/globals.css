@@ -43,3 +43,15 @@
   background: linear-gradient(135deg, #d2ab67 0%, #f5e884 100%);
   color: #191919;
 }
+
+@font-face {
+  font-family: 'IRANSansXFaNum';
+  src: url('/font/IRANSansXFaNum-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'IRANSansXFaNum', sans-serif;
+}

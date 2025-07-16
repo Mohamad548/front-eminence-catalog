@@ -8,10 +8,14 @@ interface SearchFilterProps {
   onClear: () => void;
 }
 
-export default function SearchFilter({ categories = [], onFilter, onClear }: SearchFilterProps) {
+export default function SearchFilter({
+  categories = [],
+  onFilter,
+  onClear,
+}: SearchFilterProps) {
   const [category, setCategory] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
-
+  console.log(categories);
   // هر بار تغییر category یا searchTerm، فیلتر را اجرا کن
   useEffect(() => {
     onFilter(category, searchTerm);

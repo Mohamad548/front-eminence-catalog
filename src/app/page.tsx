@@ -13,7 +13,7 @@ export default function Home() {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { addToast } = useToast();
-
+console.log(products)
   const fetchProducts = useCallback(async () => {
     setIsLoading(true);
     try {
@@ -22,7 +22,7 @@ export default function Home() {
       // داده‌ها را به نوع مورد نظر تبدیل کن
       const data: Product[] = dataFromApi.map((item) => ({
         ...item,
-        category_name: item.category?.name || '', // فرض مثال
+        category_name: item.category_name|| '1', // فرض مثال
       }));
 
       setProducts(data);
@@ -120,16 +120,16 @@ export default function Home() {
       </div>
 
       {/* دکمه چاپ - فقط در حالت نمایش */}
-      <div className="p-4 text-center bg-white border-t print:hidden">
+      <div className=" p-2 text-center btn-primary bg-white print:hidden  rounded-b-full fixed left-3 bottom-0">
         <button
           onClick={exportProductsToPrint}
-          className="btn-primary text-white px-8 py-3 rounded-lg font-medium text-lg"
-        >
-          📄 چاپ
+          className=" text-white  flex flex-col rounded-lg font-medium text-lg"
+        ><span>📄</span>
+          <span className='text-xs font-sans'>چاپ</span> 
         </button>
       </div>
       {/* جدول چاپ - فقط در حالت چاپ */}
-      <div className="hidden print:block p-4">
+      <div className="hidden print:block">
         <PrintTable products={filteredProducts} />
       </div>
     </div>
