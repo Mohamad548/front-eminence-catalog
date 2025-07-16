@@ -87,7 +87,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                   onClick={() => setIsDescModalOpen(true)}
                   className="text-blue-600 hover:text-blue-700 text-xs font-medium flex items-center gap-1 transition"
                 >
-                  مشاهده کامل
+              بیشتر
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="w-3.5 h-3.5 rotate-180"

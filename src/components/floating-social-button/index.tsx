@@ -42,7 +42,7 @@ const FloatingSocialButton = () => {
               <FaInstagram size={18} />
             </Link>
             <Link
-              href="https://wa.me/9122434557"
+              href="https://wa.me/+989122434557"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 text-white w-10 h-10 rounded-full flex items-center justify-center shadow hover:scale-110 transition"
