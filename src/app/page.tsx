@@ -14,7 +14,7 @@ export default function Home() {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { addToast } = useToast();
-console.log(products)
+  console.log(products);
   const fetchProducts = useCallback(async () => {
     setIsLoading(true);
     try {
@@ -23,11 +23,11 @@ console.log(products)
       // داده‌ها را به نوع مورد نظر تبدیل کن
       const data: Product[] = dataFromApi.map((item) => ({
         ...item,
-        category_name: item.category_name|| '1', // فرض مثال
+        category_name: item.category_name || '1', // فرض مثال
       }));
 
       setProducts(data);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       addToast('خطا در دریافت محصولات', 'error');
     } finally {
@@ -119,17 +119,20 @@ console.log(products)
           ))
         )}
       </div>
-<div>df <FloatingSocialButton /></div>
+      <div>
+        <FloatingSocialButton />
+      </div>
       {/* دکمه چاپ - فقط در حالت نمایش */}
       <div className=" p-2 text-center btn-primary bg-white print:hidden  rounded-b-full fixed left-3 bottom-0">
         <button
           onClick={exportProductsToPrint}
           className=" text-white  flex flex-col rounded-lg font-medium text-lg"
-        ><span>📄</span>
-          <span className='text-xs font-sans'>چاپ</span> 
+        >
+          <span>📄</span>
+          <span className="text-xs font-sans">چاپ</span>
         </button>
       </div>
-     
+
       {/* جدول چاپ - فقط در حالت چاپ */}
       <div className="hidden print:block">
         <PrintTable products={filteredProducts} />

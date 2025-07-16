@@ -1,6 +1,5 @@
-'use client';
-
 import { useEffect, useState } from 'react';
+import { useSelectedCategory } from '@/store/useSelectedCategory';
 
 interface SearchFilterProps {
   categories?: string[];
@@ -13,10 +12,17 @@ export default function SearchFilter({
   onFilter,
   onClear,
 }: SearchFilterProps) {
-  const [category, setCategory] = useState('');
+  const { selectedCategory, setSelectedCategory } = useSelectedCategory();
+
+  const [category, setCategory] = useState(selectedCategory ?? '');
   const [searchTerm, setSearchTerm] = useState('');
-  console.log(categories);
-  // هر بار تغییر category یا searchTerm، فیلتر را اجرا کن
+
+  useEffect(() => {
+    if (selectedCategory !== null && selectedCategory !== category) {
+      setCategory(selectedCategory);
+    }
+  }, [selectedCategory]);
+
   useEffect(() => {
     onFilter(category, searchTerm);
   }, [category, searchTerm, onFilter]);
@@ -24,7 +30,18 @@ export default function SearchFilter({
   const handleClear = () => {
     setCategory('');
     setSearchTerm('');
+    setSelectedCategory(null); // ریست شدن Zustand
     onClear();
+  };
+
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newValue = e.target.value;
+    setCategory(newValue);
+
+    // اگر کاربر دستی مقدار را عوض کرد و با مقدار فعلی Zustand فرق داشت، ریست کن
+    if (selectedCategory !== null && newValue !== selectedCategory) {
+      setSelectedCategory(null);
+    }
   };
 
   return (
@@ -32,7 +49,7 @@ export default function SearchFilter({
       <select
         className="border rounded px-4 py-2 text-sm"
         value={category}
-        onChange={(e) => setCategory(e.target.value)}
+        onChange={handleCategoryChange}
       >
         <option value="">همه دسته‌ها</option>
         {categories.map((cat) => (

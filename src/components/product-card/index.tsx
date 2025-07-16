@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { Product } from '@/types';
 import { BASE_URL } from '../../../url';
+import { useSelectedCategory } from '@/store/useSelectedCategory';
 
 interface ProductCardProps {
   product: Product;
@@ -12,7 +13,7 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [isDescModalOpen, setIsDescModalOpen] = useState(false);
-
+const { setSelectedCategory } = useSelectedCategory();
   const imageUrl = product.image
     ? `${BASE_URL}/uploads/${product.image}`
     : 'https://www.kasraeminence.com/wp-content/uploads/2024/12/cropped-cropped-2.png';
@@ -52,9 +53,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 <h3 className="font-bold text-gray-900 text-sm mb-1">
                   {product.name}
                 </h3>
-                <h3 className="text-xs text-blue-600 mb-2">
-                  {product.category_name}
-                </h3>
+             <button
+  className="text-xs text-blue-600 mb-2 cursor-pointer hover:underline"
+  onClick={() => setSelectedCategory(product.category_name || '')}
+>
+  {product.category_name}
+</button>
               </div>
               <div className="text-xs text-gray-500 mb-1">
                 شناسه: {product.code}
