@@ -13,9 +13,9 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [isDescModalOpen, setIsDescModalOpen] = useState(false);
-const { setSelectedCategory } = useSelectedCategory();
+  const { setSelectedCategory } = useSelectedCategory();
   const imageUrl = product.image
-    ? `${BASE_URL}/uploads/${product.image}`
+    ? product.image
     : 'https://www.kasraeminence.com/wp-content/uploads/2024/12/cropped-cropped-2.png';
 
   return (
@@ -23,7 +23,7 @@ const { setSelectedCategory } = useSelectedCategory();
       {/* Product Card */}
       <div className="product-card  bg-gradient-to-br from-white via-blue-50 to-white rounded-xl p-4 shadow-md hover:shadow-lg transition-all duration-200">
         <div className="flex flex-col items-start gap-4">
-          <div className='flex w-full gap-2'>
+          <div className="flex w-full gap-2">
             {' '}
             {/* Product Image */}
             <div className="flex-shrink-0 text-center">
@@ -53,12 +53,14 @@ const { setSelectedCategory } = useSelectedCategory();
                 <h3 className="font-bold text-gray-900 text-sm mb-1">
                   {product.name}
                 </h3>
-             <button
-  className="text-xs text-blue-600 mb-2 cursor-pointer hover:underline"
-  onClick={() => setSelectedCategory(product.category_name || '')}
->
-  {product.category_name}
-</button>
+                <button
+                  className="text-xs text-blue-600 mb-2 cursor-pointer hover:underline"
+                  onClick={() =>
+                    setSelectedCategory(product.category_name || '')
+                  }
+                >
+                  {product.category_name}
+                </button>
               </div>
               <div className="text-xs text-gray-500 mb-1">
                 شناسه: {product.code}
@@ -91,7 +93,7 @@ const { setSelectedCategory } = useSelectedCategory();
                   onClick={() => setIsDescModalOpen(true)}
                   className="text-blue-600 hover:text-blue-700 text-xs font-medium flex items-center gap-1 transition"
                 >
-              بیشتر
+                  بیشتر
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="w-3.5 h-3.5 rotate-180"
