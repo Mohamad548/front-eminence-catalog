@@ -1,19 +1,16 @@
 'use client';
-
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { Product } from '@/types';
-import { BASE_URL } from '../../../url';
 import { useSelectedCategory } from '@/store/useSelectedCategory';
-
 interface ProductCardProps {
   product: Product;
 }
-
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [isDescModalOpen, setIsDescModalOpen] = useState(false);
   const { setSelectedCategory } = useSelectedCategory();
+
   const imageUrl = product.image
     ? product.image
     : 'https://www.kasraeminence.com/wp-content/uploads/2024/12/cropped-cropped-2.png';
@@ -32,7 +29,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 onClick={() => setIsImageModalOpen(true)}
               >
                 <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center">
-                  <div className="relative w-20 h-20">
+                  <div className="relative 2222 w-20 h-20">
                     <Image
                       src={imageUrl}
                       alt={product.name}
@@ -72,6 +69,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                       product.height ?? '—'
                     } سانتی‌متر`
                   : ' —'}
+                {product.weight ? <h3>وزن:{product.weight}</h3> : '—'}
               </div>
 
               {/* Pricing */}

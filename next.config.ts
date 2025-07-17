@@ -2,7 +2,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['eminencecatalog-backend.onrender.com', 'www.kasraeminence.com'],
+    domains: ['eminencecatalog-backend.onrender.com', 'res.cloudinary.com'],
   },
 };
 

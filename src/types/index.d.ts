@@ -6,14 +6,13 @@ export interface Category {
 
 export interface Product {
   id: number;
-  image: string;
+  image?: string;
   code: string;
   name: string;
   categoryId: number;
   priceCustomer: number;
   description: string;
-  category?: Category;
-  image?: string;
+  category?: Category;  
   length?: number;
   width?: number;
   height?: number;

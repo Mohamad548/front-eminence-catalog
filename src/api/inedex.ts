@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
-import { BASE_URL } from '../../url';
 import { Product } from '@/types';
+import { BASE_URL } from '../../url';
 
 
 // ✅ تعریف نوع سفارشی با متد اضافه

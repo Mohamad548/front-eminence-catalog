@@ -1,12 +1,7 @@
 'use client';
-
 import Image from 'next/image';
 import React from 'react';
-import { BASE_URL } from '../../url';
 import { Product } from '@/types';
-
-
-
 interface PrintTableProps {
   products: Product[];
 }
@@ -45,7 +40,7 @@ export default function PrintTable({ products }: PrintTableProps) {
                   <Image
                     src={
                       product.image
-                        ? `${BASE_URL}/uploads/${product.image}`
+                        ? product.image
                         : 'https://www.kasraeminence.com/wp-content/uploads/2024/12/cropped-cropped-2.png'
                     }
                     alt={product.name}
