@@ -69,7 +69,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                       product.height ?? '—'
                     } سانتی‌متر`
                   : ' —'}
-                {product.weight ? <h3>وزن:{product.weight}</h3> : '—'}
+                {product.weight ? <h3>وزن:{product.weight} (Kg)</h3> : '—'}
               </div>
 
               {/* Pricing */}
