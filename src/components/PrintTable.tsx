@@ -6,6 +6,7 @@ interface PrintTableProps {
   products: Product[];
 }
 export default function PrintTable({ products }: PrintTableProps) {
+  console.log(products)
   return (
     <div className="bg-white p-6 rounded-xl shadow print:shadow-none print:p-0 print:bg-white max-w-[794px] mx-auto">
       
@@ -52,10 +53,10 @@ export default function PrintTable({ products }: PrintTableProps) {
               </td>
               <td className="py-2 px-2 border text-right">{product.name}</td>
               <td className="py-2 px-2 border font-bold text-green-600 print:text-black">
-             {product.priceCustomer?.toLocaleString('fa-IR') ?? '—'} تومان
+             {product.price_customer?.toLocaleString('fa-IR') ?? '—'} تومان
               </td>
               <td className="py-2 px-2 border">{product.code}</td>
-              <td className="py-2 px-2 border text-right whitespace-pre-line">
+              <td className="py-2 px-2 border text-right line-clamp-3 py-1">
                 {product.description}
               </td>
             </tr>

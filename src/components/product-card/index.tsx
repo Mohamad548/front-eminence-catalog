@@ -12,7 +12,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { setSelectedCategory } = useSelectedCategory();
 
   const imageUrl = product.image
-    ? product.image
+    ? product?.image
     : 'https://www.kasraeminence.com/wp-content/uploads/2024/12/cropped-cropped-2.png';
 
   return (
