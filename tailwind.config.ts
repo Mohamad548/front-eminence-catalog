@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
@@ -11,21 +11,22 @@ const config: Config = {
         sans: ['var(--font-vazirmatn)', 'sans-serif'],
       },
       colors: {
-          'brand-blue': '#0A192F', // Darker navy
-          'brand-blue-dark': '#020c1b', // Even darker
-          'brand-blue-light': '#1f93b8',
-          'brand-blue-sky': '#64ffda', // Neon cyan/teal
-          'brand-gray': '#8892b0',
-          'brand-gray-light': '#ccd6f6',
-          'brand-black': '#000000',
-          'brand-gold-dark': '#d2ab67',
-          'brand-gold-light': '#f5e884',
-          'brand-slate': '#112240',
-          'neon-pink': '#F57DFF',
+        'brand-blue': '#0A192F',
+        'brand-blue-dark': '#020c1b',
+        'brand-blue-light': '#1f93b8',
+        'brand-blue-sky': '#64ffda',
+        'brand-gray': '#8892b0',
+        'brand-gray-light': '#ccd6f6',
+        'brand-black': '#000000',
+        'brand-gold-dark': '#d2ab67',
+        'brand-gold-light': '#f5e884',
+        'brand-slate': '#112240',
+        'neon-pink': '#F57DFF',
       },
       animation: {
         fadeIn: 'fadeIn 0.5s ease-in-out forwards',
         'subtle-glow': 'subtle-glow 4s ease-in-out infinite alternate',
+        shine: 'shine 2s linear  infinite',
       },
       keyframes: {
         fadeIn: {
@@ -33,9 +34,26 @@ const config: Config = {
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
         'subtle-glow': {
-          'from': { 'box-shadow': '0 0 10px -5px #64ffda' },
-          'to': { 'box-shadow': '0 0 10px 5px #64ffda' },
-        }
+          from: { 'box-shadow': '0 0 10px -5px #64ffda' },
+          to: { 'box-shadow': '0 0 10px 5px #64ffda' },
+        },
+       shine: {
+    '0%': {
+      top: '-100%',
+      left: '-100%',
+      opacity: '0',
+      transform: 'rotate(45deg) scale(1)',
+    },
+    '50%': {
+      opacity: '0.3',
+    },
+    '100%': {
+      top: '150%',
+      left: '150%',
+      opacity: '0',
+      transform: 'rotate(45deg) scale(1)',
+    },
+  },
       },
       boxShadow: {
         'glow-cyan': '0 0 20px rgba(100, 255, 218, 0.4)',
@@ -44,5 +62,5 @@ const config: Config = {
     },
   },
   plugins: [],
-}
-export default config
+};
+export default config;

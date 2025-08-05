@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({
   onPriceSortChange
 }) => {
   return (
-    <header className="bg-brand-blue/50 backdrop-blur-md sticky top-0 z-20 py-4 px-4 md:px-8 border-b border-white/10 shadow-lg noprint">
+    <header className="bg-brand-blue/50 backdrop-blur-md sticky top-0 z-20 py-2 mb-3 px-4 md:px-8 border-b border-white/10 shadow-lg noprint">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-2">
           <h1 className="text-xl md:text-4xl font-extrabold text-brand-gray-light tracking-tight">
@@ -41,7 +41,7 @@ const Header: React.FC<HeaderProps> = ({
         </div>
         <div className="space-y-5">
           <SearchBar searchTerm={searchTerm} onSearchChange={onSearchChange} />
-          <div className="flex flex-row flex-wrap items-center justify-center gap-x-6 gap-y-3">
+          <div className="flex  flex-row flex-wrap items-center justify-center gap-x-6 gap-y-1">
             <CategoryFilter
               categories={categories}
               selectedCategory={selectedCategory}

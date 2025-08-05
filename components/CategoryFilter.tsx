@@ -16,7 +16,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({ categories, selectedCat
     onSelectCategory(value === 'default' ? null : parseInt(value, 10));
   };
 
-  const baseStyle = "whitespace-nowrap cursor-pointer pl-4 pr-8 py-2 text-sm font-medium transition-all duration-300 ease-in-out border-b-2";
+  const baseStyle = "whitespace-nowrap cursor-pointer pl-4 pr-8 py-1 text-xs font-medium transition-all duration-300 ease-in-out border-b-2";
   const selectStyle = "bg-transparent text-brand-gray-light border-transparent hover:text-white hover:border-brand-blue-sky/50 focus:outline-none focus:ring-0 focus:border-brand-blue-sky";
 
   return (
