@@ -1,3 +1,6 @@
+
+'use client';
+
 import React from 'react';
 
 type PriceSortType = 'asc' | 'desc' | null;
