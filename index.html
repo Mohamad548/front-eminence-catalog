@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>کاتالوگ لوکس</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- SwiperJS CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Vazirmatn', 'sans-serif'],
+            },
+            colors: {
+                'brand-blue': '#0A192F', // Darker navy
+                'brand-blue-dark': '#020c1b', // Even darker
+                'brand-blue-light': '#1f93b8',
+                'brand-blue-sky': '#64ffda', // Neon cyan/teal
+                'brand-gray': '#8892b0',
+                'brand-gray-light': '#ccd6f6',
+                'brand-black': '#000000',
+                'brand-gold-dark': '#d2ab67',
+                'brand-gold-light': '#f5e884',
+                'brand-slate': '#112240',
+                'neon-pink': '#F57DFF',
+            },
+            animation: {
+              fadeIn: 'fadeIn 0.5s ease-in-out forwards',
+              'subtle-glow': 'subtle-glow 4s ease-in-out infinite alternate',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0', transform: 'translateY(10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              'subtle-glow': {
+                'from': { 'box-shadow': '0 0 10px -5px #64ffda' },
+                'to': { 'box-shadow': '0 0 10px 5px #64ffda' },
+              }
+            },
+            boxShadow: {
+              'glow-cyan': '0 0 20px rgba(100, 255, 218, 0.4)',
+              'glow-gold': '0 0 20px rgba(245, 232, 132, 0.4)',
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      body {
+        --x-end: 0;
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+
+      /* Loading Screen Whale Background */
+      .whale-background {
+        background-image: url('https://storage.googleapis.com/project-emblem-images/eminence-whale.jpg');
+        background-size: cover;
+        background-position: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        animation: fadeIn 1s ease-in-out;
+      }
+      
+      /* Particles for Loading Screen */
+      @keyframes move-particles {
+        0% { transform: translateY(0) translateX(0); opacity: 1; }
+        100% { transform: translateY(-100vh) translateX(var(--x-end)); opacity: 0; }
+      }
+      
+      /* Custom Swiper Styles for a Futuristic Look */
+      .swiper-button-next,
+      .swiper-button-prev {
+          z-index: 10;
+          width: 48px;
+          height: 48px;
+          background-color: rgba(17, 34, 64, 0.5); /* brand-slate with opacity */
+          backdrop-filter: blur(8px);
+          border: 1px solid rgba(100, 255, 218, 0.2); /* brand-blue-sky with opacity */
+          border-radius: 9999px;
+          color: #64ffda; /* brand-blue-sky */
+          transition: all 0.2s ease-in-out;
+      }
+      .swiper-button-next:hover,
+      .swiper-button-prev:hover {
+          background-color: rgba(17, 34, 64, 0.8);
+          color: #ffffff;
+          border-color: rgba(100, 255, 218, 0.5);
+          box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
+      }
+      .swiper-button-next::after,
+      .swiper-button-prev::after {
+          font-size: 20px !important;
+          font-weight: 800;
+      }
+      
+      @media print {
+        @page {
+          size: A4;
+          margin: 20mm;
+        }
+        body, html {
+          background-color: #ffffff !important;
+          color: #000000 !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+        .noprint {
+          display: none !important;
+        }
+        .printable-area {
+          display: block !important;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+        }
+        table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+        thead {
+          background-color: #E5E5E5 !important;
+        }
+        th, td {
+          border: 1px solid #B0B0B0 !important;
+          padding: 8px !important;
+          text-align: right !important;
+        }
+        tr {
+            page-break-inside: avoid;
+        }
+        img {
+            max-width: 50px !important;
+            height: auto;
+        }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "swiper": "https://esm.sh/swiper@11",
+    "swiper/react": "https://esm.sh/swiper@11/react",
+    "swiper/modules": "https://esm.sh/swiper@11/modules",
+    "swiper/": "https://esm.sh/swiper@^11.2.10/",
+    "axios": "https://esm.sh/axios@1.7.2"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-brand-blue-dark text-brand-gray-light">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

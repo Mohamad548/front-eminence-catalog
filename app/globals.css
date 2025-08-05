@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  --x-end: 0;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Loading Screen Whale Background */
+.whale-background {
+  background-image: url('https://storage.googleapis.com/project-emblem-images/eminence-whale.jpg');
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Particles for Loading Screen */
+@keyframes move-particles {
+  0% { transform: translateY(0) translateX(0); opacity: 1; }
+  100% { transform: translateY(-100vh) translateX(var(--x-end)); opacity: 0; }
+}
+
+/* Custom Swiper Styles for a Futuristic Look */
+.swiper-button-next,
+.swiper-button-prev {
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    background-color: rgba(17, 34, 64, 0.5); /* brand-slate with opacity */
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(100, 255, 218, 0.2); /* brand-blue-sky with opacity */
+    border-radius: 9999px;
+    color: #64ffda; /* brand-blue-sky */
+    transition: all 0.2s ease-in-out;
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: rgba(17, 34, 64, 0.8);
+    color: #ffffff;
+    border-color: rgba(100, 255, 218, 0.5);
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 20px !important;
+    font-weight: 800;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 20mm;
+  }
+  body, html {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .noprint {
+    display: none !important;
+  }
+  .printable-area {
+    display: block !important;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  thead {
+    background-color: #E5E5E5 !important;
+  }
+  th, td {
+    border: 1px solid #B0B0B0 !important;
+    padding: 8px !important;
+    text-align: right !important;
+  }
+  tr {
+      page-break-inside: avoid;
+  }
+  img {
+      max-width: 50px !important;
+      height: auto;
+  }
+}
