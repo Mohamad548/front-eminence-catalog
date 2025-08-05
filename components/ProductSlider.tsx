@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -28,31 +28,34 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ products }) => {
 
   return (
     <div className="w-full relative noprint">
-        <Swiper
-            modules={[Navigation, A11y, EffectFlip]}
-            spaceBetween={0}
-            slidesPerView={1}
-            navigation
-          effect="slide"
-            grabCursor={true}
-            loop={products.length > 1}
-            className="w-full"
-        >
-            {products.map(product => (
-                <SwiperSlide key={product.id}>
-                   <ProductCard product={product} onImageClick={handleImageClick} />
-                </SwiperSlide>
-            ))}
-        </Swiper>
+      <Swiper
+        modules={[Navigation, A11y, EffectFlip]}
+        spaceBetween={0}
+        slidesPerView={1}
+        grabCursor={true}
+        loop={products.length > 1}
+        simulateTouch={true}
+        touchRatio={1}
+        touchStartPreventDefault={false}
+        navigation
+        effect="slide"
+        className="w-full"
+      >
+        {products.map((product) => (
+          <SwiperSlide key={product.id}>
+            <ProductCard product={product} onImageClick={handleImageClick} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
-        {selectedProduct && (
-          <ImageModal
-            isOpen={!!selectedProduct}
-            onClose={closeModal}
-            imageUrl={selectedProduct.image}
-            productName={selectedProduct.name}
-          />
-        )}
+      {selectedProduct && (
+        <ImageModal
+          isOpen={!!selectedProduct}
+          onClose={closeModal}
+          imageUrl={selectedProduct.image}
+          productName={selectedProduct.name}
+        />
+      )}
     </div>
   );
 };
