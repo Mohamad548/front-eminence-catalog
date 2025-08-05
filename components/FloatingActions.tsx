@@ -45,17 +45,17 @@ const FloatingActions: React.FC<FloatingActionsProps> = ({
   const socialLinks = [
     {
       Icon: WhatsAppIcon,
-      href: 'https://wa.me/YOUR_PHONE_NUMBER',
+      href: 'https://wa.me/989122434557?text=سلام،%20وقت%20بخیر',
       name: 'WhatsApp',
     },
     {
       Icon: InstagramIcon,
-      href: 'https://instagram.com/YOUR_USERNAME',
+      href: 'https://instagram.com/kasra_eminence',
       name: 'Instagram',
     },
     {
       Icon: TelegramIcon,
-      href: 'https://t.me/YOUR_USERNAME',
+      href: 'https://t.me/FARZADHAMIDI192',
       name: 'Telegram',
     },
   ];
