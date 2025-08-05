@@ -3,27 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
- "dev": "next dev -p 3000 -H 0.0.0.0",
+    "dev": "next dev -p 3000 -H 0.0.0.0",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "autoprefixer": "^10.4.19",
+    "axios": "^1.7.2",
+    "next": "^14.1.4",
+    "postcss": "^8.4.38",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "next": "^14.1.4",
     "swiper": "^11.1.4",
-    "axios": "^1.7.2",
-    "tailwindcss": "^3.4.1",
-    "postcss": "^8.4.38",
-    "autoprefixer": "^10.4.19"
+    "tailwindcss": "^3.4.1"
   },
   "devDependencies": {
-    "typescript": "^5.4.5",
     "@types/node": "^20.11.30",
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
-  "eslint": "^8.56.0",
-  "eslint-config-next": "^14.1.4"
+    "eslint": "^8.56.0",
+    "eslint-config-next": "^14.1.4",
+    "typescript": "^5.4.5",
+    "vite": "^7.0.6"
   }
 }
