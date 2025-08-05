@@ -1,35 +1,51 @@
+'use client';
+
 import React from 'react';
 
 export default function Loading() {
   return (
     <div className="relative flex justify-center items-center min-h-screen bg-brand-blue-dark overflow-hidden">
-      <div className="whale-background"></div>
-      <div className="absolute inset-0 bg-black/50"></div>
-      
+      {/* زمینه متحرک در صورت نیاز */}
+      <div className="whale-background" />
+
+      {/* لایه تاریک کننده */}
+      <div className="absolute inset-0 bg-black/50" />
+
+      {/* ذرات شناور */}
       <div className="absolute inset-0 pointer-events-none">
-        {Array.from({ length: 50 }).map((_, i) => (
-          <div
-            key={i}
-            className="absolute bg-brand-blue-sky/50 rounded-full"
-            style={{
-              width: `${Math.random() * 3 + 1}px`,
-              height: `${Math.random() * 3 + 1}px`,
-              left: `${Math.random() * 100}%`,
-              bottom: `-${Math.random() * 20 + 10}px`,
-              animation: `move-particles ${Math.random() * 20 + 10}s linear infinite`,
-              animationDelay: `${Math.random() * 10}s`,
-              // @ts-ignore
-              '--x-end': `${Math.random() * 40 - 20}vw`,
-            }}
-          />
-        ))}
+        {Array.from({ length: 50 }).map((_, i) => {
+          const size = Math.random() * 3 + 1;
+          const left = Math.random() * 100;
+          const bottom = -(Math.random() * 20 + 10);
+          const duration = Math.random() * 20 + 10;
+          const delay = Math.random() * 10;
+          const xEnd = Math.random() * 40 - 20;
+
+          return (
+            <div
+              key={i}
+              className="absolute bg-brand-blue-sky/50 rounded-full"
+              style={{
+                width: `${size}px`,
+                height: `${size}px`,
+                left: `${left}%`,
+                bottom: `${bottom}px`,
+                animation: `move-particles ${duration}s linear infinite`,
+                animationDelay: `${delay}s`,
+                transform: `translateX(${xEnd}vw)`,
+              }}
+            />
+          );
+        })}
       </div>
 
+      {/* متن و برند */}
       <div className="text-center z-10 animate-fadeIn">
-        <div 
-          className="relative inline-block p-4"
-        >
-          <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-widest uppercase" style={{ textShadow: '0 0 25px rgba(245, 232, 132, 0.7)' }}>
+        <div className="relative inline-block p-4">
+          <h1
+            className="text-5xl md:text-7xl font-extrabold text-white tracking-widest uppercase"
+            style={{ textShadow: '0 0 25px rgba(245, 232, 132, 0.7)' }}
+          >
             EMINENCE
           </h1>
         </div>
@@ -39,4 +55,4 @@ export default function Loading() {
       </div>
     </div>
   );
-};
+}

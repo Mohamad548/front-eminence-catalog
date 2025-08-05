@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
 import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, A11y, EffectFlip } from 'swiper/modules';
-import { Product } from '../types';
+import type { Product } from '@/types';
 import ProductCard from './ProductCard';
 import ImageModal from './ImageModal';
 
@@ -26,39 +26,33 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ products }) => {
     setSelectedProduct(null);
   };
 
-  // Key برای جلوگیری از باگ هنگام فیلتر مجدد
-  const swiperKey = products.map(p => p.id).join('-');
-
   return (
-    <div className="w-full relative">
-      <Swiper
-        key={swiperKey}
-        modules={[Navigation, A11y, EffectFlip]}
-        spaceBetween={0}
-        slidesPerView={1}
-        navigation
-        effect="flip"
-        grabCursor={true}
-        loop={products.length > 1}
-        className="w-full"
-      >
-        {products.map(product => (
-          <SwiperSlide key={product.id}>
-            <div className="w-full h-full flex justify-center items-center">
-              <ProductCard product={product} onImageClick={handleImageClick} />
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+    <div className="w-full relative noprint">
+        <Swiper
+            modules={[Navigation, A11y, EffectFlip]}
+            spaceBetween={0}
+            slidesPerView={1}
+            navigation
+          effect="slide"
+            grabCursor={true}
+            loop={products.length > 1}
+            className="w-full"
+        >
+            {products.map(product => (
+                <SwiperSlide key={product.id}>
+                   <ProductCard product={product} onImageClick={handleImageClick} />
+                </SwiperSlide>
+            ))}
+        </Swiper>
 
-      {selectedProduct && (
-        <ImageModal
-          isOpen={!!selectedProduct}
-          onClose={closeModal}
-          imageUrl={selectedProduct.image}
-          productName={selectedProduct.name}
-        />
-      )}
+        {selectedProduct && (
+          <ImageModal
+            isOpen={!!selectedProduct}
+            onClose={closeModal}
+            imageUrl={selectedProduct.image}
+            productName={selectedProduct.name}
+          />
+        )}
     </div>
   );
 };
