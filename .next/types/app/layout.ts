@@ -1,4 +1,4 @@
-// File: E:\workups\Project\Eminence\MyEminenceCatalog\users\v2\app\layout.tsx
+// File: E:\workups\Project\Eminence\MyEminenceCatalog\front-eminence-catalog\app\layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

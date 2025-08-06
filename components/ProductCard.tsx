@@ -31,23 +31,20 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onImageClick }) => {
       <div className="w-full max-w-6xl mx-auto bg-brand-slate/70 backdrop-blur-lg rounded-2xl border border-brand-blue-sky/20 shadow-2xl shadow-black/50 overflow-hidden transition-all duration-300 hover:shadow-glow-cyan hover:border-brand-blue-sky/40">
         <div className="w-full md:grid md:grid-cols-2 gap-0 md:gap-8 items-center">
           {/* Image Column */}
-<div className="relative w-full md:order-last flex justify-center items-center bg-black/20 p-2 md:p-6 overflow-hidden">
-  {/* والد نسبی با اندازه عکس و overflow-hidden */}
-  <div className="relative inline-block max-h-32 md:max-h-[200px] cursor-pointer transition-transform duration-300 hover:scale-105 overflow-hidden">
-    <img
-      src={product.image}
-      alt={product.name}
-      loading="lazy"
-      className="w-auto max-h-32 md:max-h-[200px] object-contain block"
-      onClick={() => onImageClick(product)}
-    />
-    {/* افکت براق روی خود عکس */}
-<div className="absolute top-0 left-[-100%] w-[150%] h-[150%] bg-gradient-to-r from-transparent via-white/90 to-transparent transform rotate-12 animate-shine pointer-events-none" />
-
-  </div>
-</div>
-
-
+          <div className="relative w-full md:order-last flex justify-center items-center bg-black/20 p-2 md:p-6 overflow-hidden">
+            {/* والد نسبی با اندازه عکس و overflow-hidden */}
+            <div className="relative inline-block max-h-32 md:max-h-[200px] cursor-pointer transition-transform duration-300 hover:scale-105 overflow-hidden">
+              <img
+                src={product.image[0]}
+                alt={product.name}
+                loading="lazy"
+                className="w-auto max-h-32 md:max-h-[200px] object-contain block"
+                onClick={() => onImageClick(product)}
+              />
+              {/* افکت براق روی خود عکس */}
+              <div className="absolute top-0 left-[-100%] w-[150%] h-[150%] bg-gradient-to-r from-transparent via-white/90 to-transparent transform rotate-12 animate-shine pointer-events-none" />
+            </div>
+          </div>
 
           {/* Details Column */}
           <div className="w-full flex flex-col justify-center text-right p-2 ">

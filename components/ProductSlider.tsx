@@ -17,7 +17,6 @@ interface ProductSliderProps {
 
 const ProductSlider: React.FC<ProductSliderProps> = ({ products }) => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-
   const handleImageClick = (product: Product) => {
     setSelectedProduct(product);
   };

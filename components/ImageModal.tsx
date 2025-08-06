@@ -1,10 +1,23 @@
+'use client';
+
 import React, { useEffect } from 'react';
 import { CloseIcon } from './Icons';
+
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+// Import required modules
+import { Navigation, Pagination, A11y } from 'swiper/modules';
 
 interface ImageModalProps {
   isOpen: boolean;
   onClose: () => void;
-  imageUrl: string;
+  imageUrl: string[]; // آرایه تصاویر
   productName: string;
 }
 
@@ -47,14 +60,27 @@ const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onClose, imageUrl, prod
           <CloseIcon className="w-6 h-6" />
         </button>
 
-        <div className="flex-grow overflow-auto no-scrollbar">
-            <img
-            src={imageUrl}
-            alt={productName}
-            className="w-full h-auto object-contain rounded-lg"
-            />
+        <div className="flex-grow no-scrollbar">
+          <Swiper
+            modules={[Navigation, Pagination, A11y]}
+            navigation
+            pagination={{ clickable: true }}
+            spaceBetween={10}
+            slidesPerView={1}
+            style={{ maxHeight: '70vh' }}
+          >
+            {imageUrl.map((img, index) => (
+              <SwiperSlide key={index}>
+                <img
+                  src={img}
+                  alt={`${productName} - تصویر ${index + 1}`}
+                  className="w-full h-auto object-contain rounded-lg max-h-[70vh] mx-auto"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
-        
+
         <h3 className="text-center text-xl font-bold text-brand-gray-light pt-4 mt-auto">
           {productName}
         </h3>
