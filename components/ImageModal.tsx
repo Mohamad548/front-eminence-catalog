@@ -2,10 +2,8 @@
 
 import React, { useEffect } from 'react';
 import { CloseIcon } from './Icons';
-
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -21,7 +19,12 @@ interface ImageModalProps {
   productName: string;
 }
 
-const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onClose, imageUrl, productName }) => {
+const ImageModal: React.FC<ImageModalProps> = ({
+  isOpen,
+  onClose,
+  imageUrl,
+  productName,
+}) => {
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -41,6 +44,7 @@ const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onClose, imageUrl, prod
 
   if (!isOpen) return null;
 
+  const flatImages = imageUrl.flat();
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm animate-fadeIn"
@@ -69,7 +73,7 @@ const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onClose, imageUrl, prod
             slidesPerView={1}
             style={{ maxHeight: '70vh' }}
           >
-            {imageUrl.map((img, index) => (
+            {flatImages.map((img, index) => (
               <SwiperSlide key={index}>
                 <img
                   src={img}
