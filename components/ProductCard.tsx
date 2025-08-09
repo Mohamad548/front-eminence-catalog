@@ -10,6 +10,7 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, onImageClick }) => {
+
   const specifications = [
     { label: 'کد محصول', value: product.code },
     { label: 'دسته‌بندی', value: product.category_name },

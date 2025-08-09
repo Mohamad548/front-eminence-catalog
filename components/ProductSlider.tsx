@@ -51,7 +51,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ products }) => {
         <ImageModal
           isOpen={!!selectedProduct}
           onClose={closeModal}
-          imageUrl={selectedProduct.image}
+         imageUrl={[selectedProduct.image]}
           productName={selectedProduct.name}
         />
       )}
