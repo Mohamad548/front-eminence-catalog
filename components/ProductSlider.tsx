@@ -13,18 +13,11 @@ import 'swiper/css/effect-flip';
 
 interface ProductSliderProps {
   products: Product[];
+  onImageClick: (product: Product) => void;
 }
 
-const ProductSlider: React.FC<ProductSliderProps> = ({ products }) => {
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const handleImageClick = (product: Product) => {
-    setSelectedProduct(product);
-  };
-
-  const closeModal = () => {
-    setSelectedProduct(null);
-  };
-console.log(products)
+const ProductSlider: React.FC<ProductSliderProps> = ({ products, onImageClick }) => {
+  // حذف selectedProduct از اینجا (کنترل در والد است)
   return (
     <div className="w-full relative noprint">
       <Swiper
@@ -42,19 +35,10 @@ console.log(products)
       >
         {products.map((product) => (
           <SwiperSlide key={product.id}>
-            <ProductCard product={product} onImageClick={handleImageClick} />
+            <ProductCard product={product} onImageClick={onImageClick} />
           </SwiperSlide>
         ))}
       </Swiper>
-
-      {selectedProduct && (
-        <ImageModal
-          isOpen={!!selectedProduct}
-          onClose={closeModal}
-         imageUrl={[selectedProduct.image]}
-          productName={selectedProduct.name}
-        />
-      )}
     </div>
   );
 };

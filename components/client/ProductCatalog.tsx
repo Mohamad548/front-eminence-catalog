@@ -8,23 +8,29 @@ import { Product, Category } from '@/types';
 import FloatingActions from '@/components/FloatingActions';
 import PrintableView from '@/components/PrintableView';
 import ProductCard from '../ProductCard';
+import ImageModal from '../ImageModal';
 
 type PriceSortType = 'asc' | 'desc' | null;
+export type ViewMode = 'slider' | 'list';
 
 interface ProductCatalogProps {
   products: Product[];
   categories: Category[];
 }
-export type ViewMode = 'slider' | 'list';
+
 const ProductCatalog: React.FC<ProductCatalogProps> = ({
   products,
   categories,
 }) => {
+  // State ها در یکجا
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
   const [priceSort, setPriceSort] = useState<PriceSortType>(null);
   const [isPrinting, setIsPrinting] = useState(false);
   const [viewMode, setViewMode] = useState<ViewMode>('slider');
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
+  // فیلتر و مرتب سازی محصولات
   const filteredProducts = useMemo(() => {
     let result = products.filter((product) => {
       const matchesCategory =
@@ -44,7 +50,6 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({
         if (priceSort === 'asc') {
           return a.price_customer - b.price_customer;
         } else {
-          // 'desc'
           return b.price_customer - a.price_customer;
         }
       });
@@ -53,6 +58,7 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({
     return result;
   }, [searchTerm, selectedCategory, products, priceSort]);
 
+  // هندل چاپ
   const handleTogglePrintView = (state: boolean) => {
     if (state) {
       window.scrollTo(0, 0);
@@ -60,6 +66,16 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({
     setIsPrinting(state);
   };
 
+  // هندل کلیک عکس (باز کردن مودال)
+  const handleImageClick = (product: Product) => {
+    setSelectedProduct(product);
+  };
+
+  const closeModal = () => {
+    setSelectedProduct(null);
+  };
+
+  // اگر در حالت چاپ هستیم، نمایش PrintableView
   if (isPrinting) {
     return (
       <PrintableView
@@ -86,14 +102,17 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({
       <main className="w-full mx-auto px-4">
         {filteredProducts.length > 0 ? (
           viewMode === 'slider' ? (
-            <ProductSlider products={filteredProducts} />
+            <ProductSlider
+              products={filteredProducts}
+              onImageClick={handleImageClick}
+            />
           ) : (
             <div className="flex flex-col space-y-6 py-6">
               {filteredProducts.map((product) => (
                 <ProductCard
                   key={product.id}
                   product={product}
-                  onImageClick={() => {}}
+                  onImageClick={handleImageClick}
                 />
               ))}
             </div>
@@ -119,7 +138,18 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({
           کاتالوگ محصولات امیننس | طراحی و توسعه توسط محمد محمودی
         </p>
       </footer>
+
       <FloatingActions onTogglePrintView={handleTogglePrintView} />
+
+      {/* مودال نمایش تصویر */}
+      {selectedProduct && (
+        <ImageModal
+          isOpen={!!selectedProduct}
+          onClose={closeModal}
+          imageUrl={[selectedProduct.image[0]]}
+          productName={selectedProduct.name}
+        />
+      )}
     </div>
   );
 };
