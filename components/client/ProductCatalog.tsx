@@ -7,6 +7,7 @@ import ProductSlider from '@/components/ProductSlider';
 import { Product, Category } from '@/types';
 import FloatingActions from '@/components/FloatingActions';
 import PrintableView from '@/components/PrintableView';
+import ProductCard from '../ProductCard';
 
 type PriceSortType = 'asc' | 'desc' | null;
 
@@ -14,7 +15,7 @@ interface ProductCatalogProps {
   products: Product[];
   categories: Category[];
 }
-
+export type ViewMode = 'slider' | 'list';
 const ProductCatalog: React.FC<ProductCatalogProps> = ({
   products,
   categories,
@@ -23,7 +24,7 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
   const [priceSort, setPriceSort] = useState<PriceSortType>(null);
   const [isPrinting, setIsPrinting] = useState(false);
-
+  const [viewMode, setViewMode] = useState<ViewMode>('slider');
   const filteredProducts = useMemo(() => {
     let result = products.filter((product) => {
       const matchesCategory =
@@ -78,11 +79,25 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({
         onSelectCategory={setSelectedCategory}
         priceSort={priceSort}
         onPriceSortChange={setPriceSort}
+        viewMode={viewMode}
+        onViewModeChange={setViewMode}
       />
 
-      <main className="w-full mx-auto">
+      <main className="w-full mx-auto px-4">
         {filteredProducts.length > 0 ? (
-          <ProductSlider products={filteredProducts} />
+          viewMode === 'slider' ? (
+            <ProductSlider products={filteredProducts} />
+          ) : (
+            <div className="flex flex-col space-y-6 py-6">
+              {filteredProducts.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  onImageClick={() => {}}
+                />
+              ))}
+            </div>
+          )
         ) : (
           <div className="text-center py-20 px-6 max-w-3xl mx-auto">
             <div className="flex justify-center items-center mx-auto w-20 h-20 bg-brand-slate rounded-full mb-6 border border-brand-blue-sky/20">

@@ -24,7 +24,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ products }) => {
   const closeModal = () => {
     setSelectedProduct(null);
   };
-
+console.log(products)
   return (
     <div className="w-full relative noprint">
       <Swiper
