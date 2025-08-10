@@ -146,7 +146,7 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({
         <ImageModal
           isOpen={!!selectedProduct}
           onClose={closeModal}
-          imageUrl={[selectedProduct.image[0]]}
+          imageUrl={[selectedProduct.image]}
           productName={selectedProduct.name}
         />
       )}
