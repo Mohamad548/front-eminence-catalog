@@ -79,11 +79,11 @@ const Header: React.FC<HeaderProps> = ({
         <div className="space-y-5">
           <SearchBar searchTerm={searchTerm} onSearchChange={onSearchChange} />
           <div className="flex flex-row flex-wrap items-center justify-center gap-x-6 gap-y-1">
-            <CategoryFilter
+            {/* <CategoryFilter
               categories={categories}
               selectedCategory={selectedCategory}
               onSelectCategory={onSelectCategory}
-            />
+            /> */}
             <PriceFilter
               priceSort={priceSort}
               onPriceSortChange={onPriceSortChange}

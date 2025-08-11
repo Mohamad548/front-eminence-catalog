@@ -29,10 +29,12 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({
   const [isPrinting, setIsPrinting] = useState(false);
   const [viewMode, setViewMode] = useState<ViewMode>('slider');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-
+const stabilizerProducts = useMemo(() => {
+  return products.filter(product => product.category_name === "استابلایزر");
+}, [products]);
   // فیلتر و مرتب سازی محصولات
   const filteredProducts = useMemo(() => {
-    let result = products.filter((product) => {
+    let result = stabilizerProducts.filter((product) => {
       const matchesCategory =
         selectedCategory === null || product.category_id === selectedCategory;
       const normalizedSearchTerm = searchTerm.toLowerCase().trim();
@@ -85,6 +87,7 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({
     );
   }
 
+
   return (
     <div className="bg-brand-blue-dark min-h-screen font-sans">
       <Header
@@ -100,11 +103,12 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({
       />
 
       <main className="w-full mx-auto px-4">
-        {filteredProducts.length > 0 ? (
+        {stabilizerProducts.length > 0 ? (
           viewMode === 'slider' ? (
             <ProductSlider
               products={filteredProducts}
               onImageClick={handleImageClick}
+            
             />
           ) : (
             <div className="flex flex-col space-y-6 py-6">
@@ -113,6 +117,7 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({
                   key={product.id}
                   product={product}
                   onImageClick={handleImageClick}
+                  className=''
                 />
               ))}
             </div>

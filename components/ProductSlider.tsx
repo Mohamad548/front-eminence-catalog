@@ -35,7 +35,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ products, onImageClick })
       >
         {products.map((product) => (
           <SwiperSlide key={product.id}>
-            <ProductCard product={product} onImageClick={onImageClick} />
+            <ProductCard product={product} onImageClick={onImageClick} className='max-w-6xl mx-auto'/>
           </SwiperSlide>
         ))}
       </Swiper>

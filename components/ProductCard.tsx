@@ -7,9 +7,10 @@ import { CheckCircleIcon } from './Icons';
 interface ProductCardProps {
   product: Product;
   onImageClick: (product: Product) => void;
+  className?:string
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, onImageClick }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, onImageClick ,className}) => {
 
   const specifications = [
     { label: 'کد محصول', value: product.code },
@@ -28,8 +29,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onImageClick }) => {
   );
 
   return (
-    <div className="flex items-center justify-center w-full px-4">
-      <div className="w-full max-w-6xl mx-auto bg-brand-slate/70 backdrop-blur-lg rounded-2xl border border-brand-blue-sky/20 shadow-2xl shadow-black/50 overflow-hidden transition-all duration-300 hover:shadow-glow-cyan hover:border-brand-blue-sky/40">
+    <div className={`"flex items-center justify-center w-full px-4" ${className}`}>
+      <div className="w-full bg-brand-slate/70 backdrop-blur-lg rounded-2xl border border-brand-blue-sky/20 shadow-2xl shadow-black/50 overflow-hidden transition-all duration-300 hover:shadow-glow-cyan hover:border-brand-blue-sky/40">
         <div className="w-full md:grid md:grid-cols-2 gap-0 md:gap-8 items-center">
           {/* Image Column */}
           <div className="relative w-full md:order-last flex justify-center items-center bg-black/20 p-2 md:p-6 overflow-hidden">
