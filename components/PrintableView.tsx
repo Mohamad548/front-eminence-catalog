@@ -47,7 +47,7 @@ const PrintableView: React.FC<PrintableViewProps> = ({ products, onExitPrint }) 
                 <th className="p-3 text-right font-semibold border-r border-[#abe1fa]">نام محصول</th>
                 <th className="p-3 text-right font-semibold border-r border-[#abe1fa]">مدل</th>
                 <th className="p-3 text-right font-semibold border-r border-[#abe1fa]">بازه ولتاژی</th>
-                <th className="p-3 text-left font-semibold border-r border-[#abe1fa]">قیمت (ریال)</th>
+                <th className="p-3 text-left font-semibold border-r border-[#abe1fa]">قیمت (تومان)</th>
                 <th className="p-3 text-center font-semibold border-r border-[#abe1fa]">ابعاد (W*D*H)mm</th>
                 <th className="p-3 text-center font-semibold">وزن (کیلوگرم)</th>
               </tr>
