@@ -1,5 +1,7 @@
 
 export interface Product {
+  voltage_range: any;
+  dimensions: any;
   id: number;
   image: string;
   code: string;
@@ -12,7 +14,11 @@ export interface Product {
   height: number;
   weight: string;
   category_name: string;
+  'بازه ولتاژی'?: string;
+  'ابعاد'?: string;
 }
+
+
 
 export interface Category {
   id: number;
